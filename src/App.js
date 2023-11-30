@@ -20,10 +20,10 @@ const App = () => {
           <img
             className="Movie-image"
             src={`${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`}
-            alt=""
+            alt="CANNOT PROCESS "
           ></img>
           <div className="Movie-date">Release : {movie.release_date}</div>
-          <div className="Movie-rate">{movie.vote_average}</div>
+          <div className="Movie-rate">⭐{movie.vote_average}</div>
         </div>
       );
     });
@@ -39,7 +39,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>MOVIE SCOPE</h1>
+        <h1 className="Header-title">MOVIE SCOPE</h1>
 
         <input
           type="text"
