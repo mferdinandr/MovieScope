@@ -1,10 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
 import { getMovieList, searchMovie } from './api';
+import { useEffect, useState } from 'react';
 
 const App = () => {
+  const [popularMovies, setPopularMovies] = useState([]);
+
+  useEffect(() => {
+    getMovieList().then((result) => {
+      setPopularMovies(result);
+    });
+  }, []);
+
+  const PopularMovieList = () => {
+    return popularMovies.map((movie, i) => {
+      return (
+        <div key={i}>
+          <div>{movie.title}</div>
+          <div>{movie.poster_path}</div>
+          <div>{movie.release_date}</div>
+          <div>{movie.vote_average}</div>
+          <div className="Movie-title">{movie.title}</div>
+          <img className="Movie-image" src={{movie.poster_path}} alt=""></img>
+          <div className="Movie-date">{movie.release_date}</div>
+          <div className="Movie-rate">{movie.vote_average}</div>
+        </div>
+      );
+    });
+  };
+
   const search = (q) => {
-    console.log(q);
+    console.log({ q });
   };
 
   return (
