@@ -30,8 +30,10 @@ const App = () => {
   };
 
   const search = async (q) => {
-    const query = await searchMovie(q);
-    console.log({ query: query });
+    if (q.length > 3) {
+      const query = await searchMovie(q);
+      setPopularMovies(query.results);
+    }
   };
 
   return (
